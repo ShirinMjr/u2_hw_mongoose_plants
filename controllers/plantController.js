@@ -5,8 +5,11 @@ const getAllPlants = async (req, res) => {
     try {
         const PORT = process.env.PORT || 3001;
 
-    } catch (err) {
-        return res.status(500).send(err.message);
+        const plants = await Plant.find();
+        return res.json(plants);
+
+    } catch (error) {
+        return res.status(500).send(error.message);
     }
 };
 
